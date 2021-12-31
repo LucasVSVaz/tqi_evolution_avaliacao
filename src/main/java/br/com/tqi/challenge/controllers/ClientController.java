@@ -25,15 +25,15 @@ public class ClientController {
         return clientService.create(clientDTO);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public MessageResponseDTO update(@PathVariable Long id, @RequestBody @Valid ClientDTO clientDTO)
             throws PersonNotFoundException {
-        return clientService.update(id, clientDTO);
+        return clientService.updateById(id, clientDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) throws PersonNotFoundException {
-        clientService.delete(id);
+    public MessageResponseDTO delete(@PathVariable Long id) throws PersonNotFoundException {
+        return clientService.deleteById(id);
     }
 
     @GetMapping
@@ -41,6 +41,7 @@ public class ClientController {
         return clientService.getAll();
     }
 
+    @GetMapping("/{id}")
     public Client getById(@PathVariable Long id) throws PersonNotFoundException {
         return clientService.getById(id);
     }

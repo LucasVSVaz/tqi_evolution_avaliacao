@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tb_adress")
 public class Address {
 
     @Id

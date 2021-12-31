@@ -29,7 +29,7 @@ public class ClientService {
     }
 
     @Transactional
-    public MessageResponseDTO update(Long id, ClientDTO clientDTO) throws PersonNotFoundException {
+    public MessageResponseDTO updateById(Long id, ClientDTO clientDTO) throws PersonNotFoundException {
         verifyIfIdExist(id);
         Client clientSaved = clientDTO.toClient();
         clientRepository.save(clientSaved);
@@ -40,9 +40,13 @@ public class ClientService {
     }
 
     @Transactional
-    public void delete(Long id) throws PersonNotFoundException {
+    public MessageResponseDTO deleteById(Long id) throws PersonNotFoundException {
         verifyIfIdExist(id);
         clientRepository.deleteById(id);
+        return MessageResponseDTO
+                .builder()
+                .message("Client successfully deleted")
+                .build();
     }
 
     public List<Client> getAll() {
