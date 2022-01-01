@@ -49,14 +49,14 @@ public class ClientDTO {
 
 
     public Client toClient() {
-        Client client = new Client();
-        client.setName(this.name);
-        client.setCpf(this.cpf);
-        client.setRg(this.rg);
-        client.setAddress(this.address);
-        client.setEmail(this.email);
-        client.setPassword(this.password);
-        client.setIncome(this.income);
-        return client;
+        return Client.builder()
+                .name(this.name)
+                .cpf(this.cpf)
+                .rg(this.rg)
+                .address(this.address)
+                .email(this.email)
+                .password(this.password)
+                .income(this.income)
+                .build();
     }
 }
