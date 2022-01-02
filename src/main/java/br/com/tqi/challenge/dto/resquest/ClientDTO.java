@@ -2,6 +2,7 @@ package br.com.tqi.challenge.dto.resquest;
 
 import br.com.tqi.challenge.entities.Address;
 import br.com.tqi.challenge.entities.Client;
+import br.com.tqi.challenge.entities.Loan;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,6 +48,8 @@ public class ClientDTO {
     @NotEmpty
     private List<Address> address = new ArrayList<>();
 
+    private List<Loan> loan = new ArrayList<>();
+
 
     public Client toClient() {
         return Client.builder()
@@ -57,6 +60,7 @@ public class ClientDTO {
                 .email(this.email)
                 .password(this.password)
                 .income(this.income)
+                .loan(this.loan)
                 .build();
     }
 }

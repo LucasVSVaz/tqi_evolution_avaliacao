@@ -43,4 +43,7 @@ public class Client {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Loan> loan = new ArrayList<>();
+
 }
