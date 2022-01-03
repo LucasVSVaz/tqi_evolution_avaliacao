@@ -3,6 +3,7 @@ package br.com.tqi.challenge.controllers;
 import br.com.tqi.challenge.dto.response.MessageResponseDTO;
 import br.com.tqi.challenge.dto.resquest.ClientDTO;
 import br.com.tqi.challenge.entities.Client;
+import br.com.tqi.challenge.entities.Loan;
 import br.com.tqi.challenge.exceptions.PersonNotFoundException;
 import br.com.tqi.challenge.service.ClientService;
 import lombok.AllArgsConstructor;
@@ -26,13 +27,13 @@ public class ClientController {
     }
 
     @PutMapping("/{id}")
-    public MessageResponseDTO update(@PathVariable Long id, @RequestBody @Valid ClientDTO clientDTO)
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid ClientDTO clientDTO)
             throws PersonNotFoundException {
         return clientService.updateById(id, clientDTO);
     }
 
     @DeleteMapping("/{id}")
-    public MessageResponseDTO delete(@PathVariable Long id) throws PersonNotFoundException {
+    public MessageResponseDTO deleteById(@PathVariable Long id) throws PersonNotFoundException {
         return clientService.deleteById(id);
     }
 
@@ -45,4 +46,10 @@ public class ClientController {
     public Client getById(@PathVariable Long id) throws PersonNotFoundException {
         return clientService.getById(id);
     }
+
+    @GetMapping("/loan/list")
+    public List<Loan> getLoanList(){
+        return clientService.getLoanList();
+    }
+
 }

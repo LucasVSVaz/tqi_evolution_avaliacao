@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -43,6 +44,7 @@ public class ClientDTO {
     @Size(min = 5)
     private String password;
 
+    @DecimalMin(value = "0.0")
     private BigDecimal income;
 
     @NotEmpty
