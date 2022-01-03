@@ -8,6 +8,7 @@ import br.com.tqi.challenge.exceptions.PersonNotFoundException;
 import br.com.tqi.challenge.repository.ClientRepository;
 import br.com.tqi.challenge.repository.LoanRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,10 +20,12 @@ public class ClientService {
 
     private ClientRepository clientRepository;
     private LoanRepository loanRepository;
+    private PasswordEncoder encoder;
 
 
     public MessageResponseDTO create(ClientDTO clientDTO) {
         Client clientSaved = clientDTO.toClient();
+        clientSaved.setPassword(encoder.encode(clientSaved.getPassword()));
         clientRepository.save(clientSaved);
         return MessageResponseDTO
                 .builder()
@@ -59,7 +62,7 @@ public class ClientService {
 
     }
 
-    public List<Loan> getLoanList(){
+    public List<Loan> getLoanList() {
         return loanRepository.findAll();
     }
 
