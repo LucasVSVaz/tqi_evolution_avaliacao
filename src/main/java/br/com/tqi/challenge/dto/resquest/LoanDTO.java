@@ -20,7 +20,6 @@ public class LoanDTO {
 
     private Long id;
 
-    @NotBlank(message = "value starting with 0")
     private BigDecimal value;
 
     @JsonFormat(pattern = "dd/MM/yyyy")

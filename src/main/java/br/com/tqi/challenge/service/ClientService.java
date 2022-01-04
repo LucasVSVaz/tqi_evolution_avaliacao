@@ -4,6 +4,7 @@ import br.com.tqi.challenge.dto.response.MessageResponseDTO;
 import br.com.tqi.challenge.dto.resquest.ClientDTO;
 import br.com.tqi.challenge.entities.Client;
 import br.com.tqi.challenge.entities.Loan;
+import br.com.tqi.challenge.exceptions.EmptyLoanListException;
 import br.com.tqi.challenge.exceptions.PersonNotFoundException;
 import br.com.tqi.challenge.repository.ClientRepository;
 import br.com.tqi.challenge.repository.LoanRepository;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -62,8 +66,20 @@ public class ClientService {
 
     }
 
-    public List<Loan> getLoanList() {
+    public List<Loan> getLoanList() throws EmptyLoanListException {
+        List<Loan> all = loanRepository.findAll();
+        if (all.isEmpty()){
+            throw new EmptyLoanListException();
+        }
         return loanRepository.findAll();
+    }
+
+    public Stream<Loan> getLoanById(Long id) throws EmptyLoanListException {
+        Stream<Loan> loanStream = loanRepository.findAll().stream().filter(i -> Objects.equals(i.getClient().getId(), id));
+        if (loanStream.toList().isEmpty()){
+            throw new EmptyLoanListException();
+        }
+        return loanRepository.findAll().stream().filter(i -> Objects.equals(i.getClient().getId(), id));
     }
 
 

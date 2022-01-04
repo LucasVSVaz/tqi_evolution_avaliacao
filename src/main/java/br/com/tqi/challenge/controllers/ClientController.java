@@ -4,6 +4,7 @@ import br.com.tqi.challenge.dto.response.MessageResponseDTO;
 import br.com.tqi.challenge.dto.resquest.ClientDTO;
 import br.com.tqi.challenge.entities.Client;
 import br.com.tqi.challenge.entities.Loan;
+import br.com.tqi.challenge.exceptions.EmptyLoanListException;
 import br.com.tqi.challenge.exceptions.PersonNotFoundException;
 import br.com.tqi.challenge.service.ClientService;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api/v1/client")
@@ -48,8 +50,14 @@ public class ClientController {
     }
 
     @GetMapping("/loan/list")
-    public List<Loan> getLoanList(){
+    public List<Loan> getLoanList() throws EmptyLoanListException {
         return clientService.getLoanList();
     }
+
+    @GetMapping("/loan/list/{id}")
+    public Stream<Loan> getLoanByClientId(@PathVariable Long id) throws EmptyLoanListException {
+        return clientService.getLoanById(id);
+    }
+
 
 }
