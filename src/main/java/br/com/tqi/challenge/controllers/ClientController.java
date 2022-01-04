@@ -55,7 +55,7 @@ public class ClientController {
     }
 
     @GetMapping("/loan/list/{id}")
-    public Stream<Loan> getLoanByClientId(@PathVariable Long id) throws EmptyLoanListException {
+    public List<Loan> getLoanByClientId(@PathVariable Long id) throws EmptyLoanListException {
         return clientService.getLoanById(id);
     }
 

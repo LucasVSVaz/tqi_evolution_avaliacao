@@ -26,7 +26,7 @@ public class LoanDTO {
     private LocalDate firstInstallmentDate;
 
     @Min(1)
-    @Max(60)
+    @Max(value = 60)
     private Integer numberInstallments;
 
 
@@ -41,4 +41,5 @@ public class LoanDTO {
                 .client(this.client)
                 .build();
     }
+
 }

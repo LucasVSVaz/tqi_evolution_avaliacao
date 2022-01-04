@@ -2,8 +2,9 @@ package br.com.tqi.challenge.controllers;
 
 import br.com.tqi.challenge.dto.response.MessageResponseDTO;
 import br.com.tqi.challenge.dto.resquest.LoanDTO;
+import br.com.tqi.challenge.dto.resquest.LoanPresentation;
 import br.com.tqi.challenge.entities.Loan;
-import br.com.tqi.challenge.exceptions.PersonNotFoundException;
+import br.com.tqi.challenge.exceptions.LoanNotFoundException;
 import br.com.tqi.challenge.service.LoanService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,12 +27,12 @@ public class LoanController {
     }
 
     @PutMapping("/{id}")
-    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody LoanDTO loanDTO) throws PersonNotFoundException {
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody LoanDTO loanDTO) throws LoanNotFoundException {
         return loanService.updateById(id, loanDTO);
     }
 
     @DeleteMapping("/{id}")
-    public MessageResponseDTO deleteById(@PathVariable Long id) throws PersonNotFoundException {
+    public MessageResponseDTO deleteById(@PathVariable Long id) throws LoanNotFoundException {
         return loanService.deleteById(id);
     }
 
@@ -41,8 +42,12 @@ public class LoanController {
     }
 
     @GetMapping("/{id}")
-    public Loan getById(@PathVariable Long id) throws PersonNotFoundException {
+    public Loan getById(@PathVariable Long id) throws LoanNotFoundException {
         return loanService.getById(id);
     }
 
+    @GetMapping("/detail")
+    public List<LoanPresentation> testReturn (){
+        return loanService.loanDetail();
+    }
 }

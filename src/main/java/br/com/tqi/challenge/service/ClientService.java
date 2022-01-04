@@ -74,12 +74,8 @@ public class ClientService {
         return loanRepository.findAll();
     }
 
-    public Stream<Loan> getLoanById(Long id) throws EmptyLoanListException {
-        Stream<Loan> loanStream = loanRepository.findAll().stream().filter(i -> Objects.equals(i.getClient().getId(), id));
-        if (loanStream.toList().isEmpty()){
-            throw new EmptyLoanListException();
-        }
-        return loanRepository.findAll().stream().filter(i -> Objects.equals(i.getClient().getId(), id));
+    public List<Loan> getLoanById(Long clientId) throws EmptyLoanListException {
+        return loanRepository.findLoadsByClientId(clientId);
     }
 
 
