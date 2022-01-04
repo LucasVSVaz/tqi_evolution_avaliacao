@@ -30,6 +30,7 @@ public class LoanDTO {
     @Max(60)
     private Integer numberInstallments;
 
+
     private Client client;
 
 
