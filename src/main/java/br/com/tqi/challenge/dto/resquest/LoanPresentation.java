@@ -27,25 +27,17 @@ public class LoanPresentation {
     private BigDecimal income;
 
 
-//    public void fromLoan(Loan loan){
-//        this.id = loan.getId(),
-//        this.value = loan.getValue(),
-//        this.firstInstallmentDate = loan.getFirstInstallmentDate(),
-//        this.numberInstallments = loan.getNumberInstallments(),
-//        this.email = loan.getClient().getEmail(),
-//        this.income = loan.getClient().getIncome();
-//    }
-
-
     public LoanPresentation getStatus(Loan loan) {
-        LoanPresentation loanPresentationTest = new LoanPresentation();
-        loanPresentationTest.setId(loan.getId());
-        loanPresentationTest.setValue(loan.getValue());
-        loanPresentationTest.setFirstInstallmentDate(loan.getFirstInstallmentDate());
-        loanPresentationTest.setNumberInstallments(loan.getNumberInstallments());
-        loanPresentationTest.setEmail(loan.getClient().getEmail());
-        loanPresentationTest.setIncome(loan.getClient().getIncome());
-        return loanPresentationTest;
+        return LoanPresentation.builder()
+                .id(loan.getId())
+                .value(loan.getValue())
+                .firstInstallmentDate(loan.getFirstInstallmentDate())
+                .numberInstallments(loan.getNumberInstallments())
+                .email(loan.getClient().getEmail())
+                .income(loan.getClient().getIncome())
+                .build();
     }
+
+
 
 }
