@@ -49,10 +49,10 @@ public class ClientController {
         return clientService.getById(id);
     }
 
-    @GetMapping("/loan/list")
-    public List<Loan> getLoanList() throws EmptyLoanListException {
-        return clientService.getLoanList();
-    }
+//    @GetMapping("/loan/list")
+//    public List<Loan> getLoanList() throws EmptyLoanListException {
+//        return clientService.getLoanList();
+//    }
 
     @GetMapping("/loan/list/{id}")
     public List<Loan> getLoanByClientId(@PathVariable Long id) throws EmptyLoanListException {

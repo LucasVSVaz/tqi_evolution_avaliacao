@@ -66,13 +66,13 @@ public class ClientService {
 
     }
 
-    public List<Loan> getLoanList() throws EmptyLoanListException {
-        List<Loan> all = loanRepository.findAll();
-        if (all.isEmpty()){
-            throw new EmptyLoanListException();
-        }
-        return loanRepository.findAll();
-    }
+//    public List<Loan> getLoanList() throws EmptyLoanListException {
+//        List<Loan> all = loanRepository.findAll();
+//        if (all.isEmpty()){
+//            throw new EmptyLoanListException();
+//        }
+//        return loanRepository.findAll();
+//    }
 
     public List<Loan> getLoanById(Long clientId) throws EmptyLoanListException {
         return loanRepository.findLoadsByClientId(clientId);

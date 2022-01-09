@@ -50,24 +50,82 @@ O projeto está divido nas seguintes camadas:
     ]
 }
 ```   
+**Cliente criado**:    
+```javascript
+[
+    {
+        "id": 1,
+        "name": "José da silva",
+        "cpf": "04304430050",
+        "rg": "mg1816478",
+        "email": "jose@gmail.com",
+        "password": "$2a$10$2eroCZUSpWpkwpxvlajTpOlukYiCuMVvDyMYpwx4let2lybInRzpu",
+        "income": 5000.00,
+        "address": [
+            {
+                "id": 1,
+                "state": "MG",
+                "city": "Uberlândia",
+                "district": "Jardim Brasília",
+                "street": "Rua Teste",
+                "number": 1080,
+                "cep": "31535496"
+            }
+        ]
 
 
-2. **``POST /api/v1/loan``**: Solicitação de empréstimo.
+```  
+
+3. **``POST /api/v1/loan``**: Solicitação de empréstimo.
 ```javascript
 {
-    "value": 5000,
+    "value": 500,
     "firstInstallmentDate": "25/01/2022",
-    "numberInstallments":5,
+    "numberInstallments":2,
     "client":{
-        "id":3
+        "id":1
     }
 }
 ```
 
-3. **``GET /api/v1/client/loan/list``**: Lista todos os empréstimos cadastrados.
+**Empréstimo criado**:
 
-4. **``GET /api/v1/client/loan/list/{id}``**: Lista todos os empréstimos vinculados ao ID do Cliente.
+```javascript
 
-5. **``GET /api/v1/loan/detail``**: Retorna os detalhes do empréstimo.
+[
+    {
+        "id": 1,
+        "value": 500.00,
+        "firstInstallmentDate": "25/01/2022",
+        "numberInstallments": 2,
+        "client": {
+            "id": 1,
+            "name": "José da silva",
+            "cpf": "04304430050",
+            "rg": "mg1816478",
+            "email": "jose@gmail.com",
+            "password": "$2a$10$2eroCZUSpWpkwpxvlajTpOlukYiCuMVvDyMYpwx4let2lybInRzpu",
+            "income": 5000.00,
+            "address": [
+                {
+                    "id": 1,
+                    "state": "MG",
+                    "city": "Uberlândia",
+                    "district": "Jardim Brasília",
+                    "street": "Rua Teste",
+                    "number": 1080,
+                    "cep": "31535496"
+                }
+            ]
+
+```
+
+3. **``GET /api/v1/loan``**: Lista todos os empréstimos cadastrados.
+
+4  **``GET /api/v1/loan/detail``**: Retorna os detalhes do empréstimo.
+
+5. **``GET /api/v1/client/loan/list/{id}``**: Lista todos os empréstimos vinculados ao ID do Cliente.
+
+
 
 
