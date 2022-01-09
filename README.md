@@ -66,7 +66,7 @@ O projeto está divido nas seguintes camadas:
 
 3. **``GET /api/v1/client/loan/list``**: Lista todos os empréstimos cadastrados.
 
-4. **``GET /api/v1/client/loan/list/1``**: Lista todos os empréstimos vinculados ao ID do Cliente.
+4. **``GET /api/v1/client/loan/list/{id}``**: Lista todos os empréstimos vinculados ao ID do Cliente.
 
 5. **``GET /api/v1/loan/detail``**: Retorna os detalhes do empréstimo.
 
